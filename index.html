@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+    <title>Jessie's Portfolio</title>
+    
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/lazysizes.min.js"></script>
+    <script src="./js/jquery.easing.1.3.js"></script>
+    
+    <link rel="stylesheet" href="./css/font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="./css/animate.css">
+    <script src="./js/wow.min.js"></script>
+
+    <link rel="stylesheet" href="./css/layout.css">
+    <script src="./js/layout.js"></script>
+
+    <style>
+    
+
+        @media(max-width:1200px){}
+    /*sec1區===============================================================*/
+        #sec1 .container{display: flex;align-items: center;justify-content: center; flex-wrap: wrap;padding: 180px 20px 20px 20px;}
+        #sec1 .container .myphoto{position: relative;}
+        #sec1 .container .myphoto img{max-width: 100%;}
+        #sec1 .container .introduction{padding:30px;}
+        @media(min-width:768px){ #sec1 .container .introduction{padding:60px;} }
+        @media(min-width:992px){ #sec1 .container .introduction{width: 40%;padding:0 0 0 60px;} }
+        #sec1 .container .introduction h1{font-size: 4rem;margin-bottom: 20px;}
+        #sec1 .container .introduction p{line-height: 2.5rem;letter-spacing: .1rem;text-align: left;}
+        #sec1 .container .introduction h2{margin-top: 50px;margin-bottom: 20px;}
+    
+    
+    /*sec3區===============================================================*/
+        #sec3{text-align: center;}
+        #sec3 .container {padding: 0 35px;}
+        @media(min-width:992px){ #sec3 .container {padding: 0 50px;} }
+        @media(min-width:1400px){ #sec3 .container {padding: 0;} }
+
+        #sec3 .container > h2{padding: 100px 0 50px 0;letter-spacing: 1.4rem;text-indent: 1.4rem;}
+        #sec3 .container > span{display: inline-block; margin: 10px 10px; letter-spacing: .2rem;text-indent: .2rem; font-size: 14px;color: #aaaaaa;}
+        #sec3 .container > span:hover{color: #000000;cursor: pointer;animation: swing 1s 1;font-weight: bold;}
+        @keyframes swing{
+            15%{transform: translateX(5px);}
+            40%{transform: translateX(-5px);}
+            65%{transform: translateX(2px);}
+            85%{transform: translateX(-2px);}
+            100%{transform: translateX(0px);}
+        }
+        #sec3 .container > p{display: inline-block;color: #aaaaaa;}
+        #sec3 .container .project{display: flex;flex-wrap: wrap;justify-content: center;margin-top: 50px;}
+        #sec3 .container .project figure{margin:0 0 40px 0; position: relative;overflow: hidden;}
+        @media(min-width:768px){ #sec3 .container .project figure{margin:0 0 60px 0} }
+        @media(min-width:992px){ #sec3 .container .project figure{width: 40%; margin:30px;} }
+        @media(min-width:1400px){ #sec3 .container .project figure{width: 28%;} }
+
+        #sec3 .container .project figure img{max-width: 100%;}
+        #sec3 .container .project figure figcaption{display: none;}
+        #sec3 .container .project figure:hover figcaption{display: flex;justify-content: center;align-items: center;background-color: rgba(0, 0, 0, 0.8);color: rgb(187, 187, 187);position: absolute;bottom: 0;left: 0;width: 100%;height: 100%;animation-name: projectAni;animation-duration: .8s;letter-spacing: .3rem;text-indent: .3rem;line-height: 2rem;}
+        @keyframes projectAni{
+            0%{transform: translateY(200px);}
+        }/*漸漸上滑動畫*/
+        #sec3 .container .projectText{display: none;width: 80vw;height: 92vh;  background: rgb(255, 255, 255);position: absolute;z-index: 2;overflow: auto;}/*按下作品的彈出視窗*/
+        #sec3 .container .projectText .closebutton{display: flex;justify-content:flex-end;align-items: center; /**/padding: 30px;}
+        .fa-times-circle{font-size: 24px;margin: 0 10px;}
+        #sec3 .container .projectText .closebutton p{font-size: 18px;color: #000000;}
+        #sec3 .container .projectText .imgarea{padding:30px;}
+       
+        @media(min-width:768px){ #sec3 .container .projectText .imgarea{padding:60px;} }
+
+        #sec3 .container .projectText .imgarea h2{text-align: left;letter-spacing: .4rem;margin-bottom: 50px;}
+        #sec3 .container .projectText .imgarea p{font-size: 14px;margin: 30px 0px 60px 0px;text-align: left;letter-spacing: .2rem;line-height: 2rem;}
+        #sec3 .container .projectText .imgarea img{max-width: 100%; height: auto;margin: 20px 0;}
+        @media(min-width:768px){ #sec3 .container .projectText .imgarea img{margin: 50px 0;} }
+
+        #sec3 footer{font-size: 12px;padding: 50px;letter-spacing: .1rem;}
+        .otherBlock{position: fixed;left: 0;top: 0;background-color: rgba(0, 0, 0, 0.6);width: 100%;height: 100%;display: none;z-index: 1;}
+    </style>
+</head>
+
+<body>
+    <!--header區=============================================================-->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="./index.html">
+                    <img src="./images/i_logo.png" alt="">
+                </a>
+            </div>
+            <i class="fa fa-bars" aria-hidden="true"></i><!--手機版漢堡圖-->
+            <nav>
+                <i class="fa fa-times" aria-hidden="true"></i><!--手機版nav叉叉-->
+                <a href="#sec3">專案作品</a>
+            </nav>
+        </div>
+    </header>
+
+    <!--sec1區=============================================================-->
+    <section id="sec1">
+        <div class="container">
+            <div class="myphoto wow fadeInRight">
+                <img src="./images/i_myphoto.png" alt="">
+            </div>
+            <div class="introduction wow fadeInUp">
+                <h1>哩 賀 !</h1>
+                <p>您好，我是莊雪宜。有五年設計經驗（其中包含大型活動），擅長使用Adobe Photoshop、Adobe Illustrator來製圖排版！一起來看看我的作品吧！</p>
+                <h2 class="wow fadeInRight">Contact</h2>
+                <div class="wow fadeInRight">
+                   <p><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;0928-908-481&nbsp;</p>
+                   <p><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;j870262@gmail.com</p>
+                <div>
+            </div> 
+        </div>        
+    </section>
+
+   
+
+    <!--sec3區=============================================================-->
+    <section id="sec3">
+        <div class="container">
+            <h2 class="wow fadeInDown">專案作品</h2>
+            <span data-title="proAll">All</span>
+            <p>|</p>
+            <span data-title="proKv">KV</span>
+            <p>|</p>
+            <span data-title="proGraphic">Graphic</span>
+            <p>|</p>
+            <span data-title="proAi">Illustration</span>
+            <p>|</p>
+            <span data-title="proLogo">LOGO</span>
+            <p>|</p>
+            <span data-title="proSketchup">SketchUp</span>
+            <div class="project">
+                <figure class="wow fadeInUp" rrr="0" alt="i_project1"   data-title="proAll proGraphic">                  <img class="lazyload" data-src="./images/i_project1.jpg"  alt=""><figcaption>安麗Facebook社群圖設計</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="1" alt="i_project2"   data-title="proAll proKv">                       <img class="lazyload" data-src="./images/i_project2.jpg"  alt=""><figcaption>六角國際路跑主視覺提案</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="2" alt="i_project3"   data-title="proAll proKv">                       <img class="lazyload" data-src="./images/i_project3.jpg"  alt=""><figcaption>新北市政府鐵道馬拉松<br>主視覺提案</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="3" alt="i_project4"   data-title="proAll proKv">                       <img class="lazyload" data-src="./images/i_project4.jpg"  alt=""><figcaption>歐都納3D零接觸<br>主視覺設計</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="4" alt="i_project5"   data-title="proAll proKv">                       <img class="lazyload" data-src="./images/i_project5.jpg"  alt=""><figcaption>三星公益路跑主視覺提案</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="5" alt="i_project6"   data-title="proAll proKv">                       <img class="lazyload" data-src="./images/i_project6.jpg"  alt=""><figcaption>廣達家庭日主視覺提案</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="6" alt="i_project7"   data-title="proAll proKv">                       <img class="lazyload" data-src="./images/i_project7.jpg"  alt=""><figcaption>台灣精品2020前進柏林馬拉松<br>主視覺提案</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="7" alt="i_project8"   data-title="proAll proGraphic">                  <img class="lazyload" data-src="./images/i_project8.jpg"  alt=""><figcaption>新北市政府鐵道馬拉松<br>主視覺延伸設計物製作</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="8" alt="i_project9"   data-title="proAll proGraphic">                  <img class="lazyload" data-src="./images/i_project9.jpg"  alt=""><figcaption>美麗佳人裙擺澎澎RUN<br>主視覺延伸設計物製作</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="9" alt="i_project10"  data-title="proAll proGraphic">                  <img class="lazyload" data-src="./images/i_project10.jpg" alt=""><figcaption>六角國際數位轉型記者會<br>EDM設計</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="10" alt="i_project11" data-title="proAll proGraphic">                  <img class="lazyload" data-src="./images/i_project11.jpg" alt=""><figcaption>台灣精品推廣行銷案設計</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="11" alt="i_project12" data-title="proAll proGraphic">                  <img class="lazyload" data-src="./images/i_project12.jpg" alt=""><figcaption>寶礦力路跑<br>主視覺延伸設計物製作</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="12" alt="i_project13" data-title="proAll proKv">                       <img class="lazyload" data-src="./images/i_project13.jpg" alt=""><figcaption>廣達家庭日主視覺提案</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="13" alt="i_project14" data-title="proAll proGraphic">                  <img class="lazyload" data-src="./images/i_project14.jpg" alt=""><figcaption>Firefox公益路跑<br>主視覺延伸設計物製作</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="14" alt="i_project15" data-title="proAll proKv proGraphic">            <img class="lazyload" data-src="./images/i_project15.jpg" alt=""><figcaption>千禧之愛健康基金會<br>聖誕肌動趴專案設計</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="15" alt="i_project16" data-title="proAll proGraphic">                  <img class="lazyload" data-src="./images/i_project16.jpg" alt=""><figcaption>虎趴路跑tigerrun<br>主視覺延伸設計物製作</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="16" alt="i_project17" data-title="proAll proKv proGraphic proSketchup"><img class="lazyload" data-src="./images/i_project17.jpg" alt=""><figcaption>台灣精品Zumba Fest專案設計</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="17" alt="i_project18" data-title="proAll proGraphic">                  <img class="lazyload" data-src="./images/i_project18.jpg" alt=""><figcaption>SKECHERS加菲貓公益健走<br>主視覺延伸設計物製作</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="18" alt="i_project19" data-title="proAll proGraphic">                  <img class="lazyload" data-src="./images/i_project19.jpg" alt=""><figcaption>OPEN! RUN<br>主視覺延伸設計物製作</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="19" alt="i_project20" data-title="proAll proGraphic">                  <img class="lazyload" data-src="./images/i_project20.jpg" alt=""><figcaption>OPEN!夏日運動會氣墊樂園<br>主視覺延伸設計物製作</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="20" alt="i_project21" data-title="proAll proGraphic">                  <img class="lazyload" data-src="./images/i_project21.jpg" alt=""><figcaption>雨傘達人網拍長條圖設計</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="21" alt="i_project22" data-title="proAll proAi">                       <img class="lazyload" data-src="./images/i_project22.jpg" alt=""><figcaption>Line貼圖<br>雙胞胎狗狗-鍋蓋跟Yoyi</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="22" alt="i_project23" data-title="proAll proAi">                       <img class="lazyload" data-src="./images/i_project23.jpg" alt=""><figcaption>Line主題<br>Oh my goose!我的老天鵝啊！</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="23" alt="i_project24" data-title="proAll proLogo proAi">               <img class="lazyload" data-src="./images/i_project24.jpg" alt=""><figcaption>揪音GAME Logo設計</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="24" alt="i_project25" data-title="proAll proLogo">                     <img class="lazyload" data-src="./images/i_project25.jpg" alt=""><figcaption>SNOW美學Logo設計</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="25" alt="i_project26" data-title="proAll proLogo">                     <img class="lazyload" data-src="./images/i_project26.jpg" alt=""><figcaption>元本舖Logo設計</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="26" alt="i_project27" data-title="proAll proLogo">                     <img class="lazyload" data-src="./images/i_project27.jpg" alt=""><figcaption>左輔上海貿易公司Logo設計</figcaption></figure>
+                <figure class="wow fadeInUp" rrr="27" alt="i_project28" data-title="proAll proKv proGraphic proAi proLogo proSketchup"></figure>
+                <figure class="wow fadeInUp" rrr="28" alt="i_project29" data-title="proAll proKv proGraphic proAi proLogo proSketchup"></figure>
+            </div>
+            <div class="projectText"><!--彈出視窗-->
+                <div class="closebutton"><!--彈出視窗關閉按鈕-->
+                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                    <p>關&nbsp閉</p>
+                </div>
+                <div class="imgarea"><!--彈出視窗內文-->
+                    <h2></h2>
+                    <p></p>
+                    <img class="lazyload" data-src="" alt=""><br>
+                    <img class="lazyload" data-src="" alt=""><br>
+                    <img class="lazyload" data-src="" alt=""><br>
+                    <img class="lazyload" data-src="" alt=""><br>
+                    <img class="lazyload" data-src="" alt=""><br>
+                    <img class="lazyload" data-src="" alt=""><br>
+                    <img class="lazyload" data-src="" alt=""><br>
+                    <img class="lazyload" data-src="" alt=""><br>
+                    <img class="lazyload" data-src="" alt=""><br>
+                    <img class="lazyload" data-src="" alt=""><br>
+                    <img class="lazyload" data-src="" alt=""><br>
+                    <img class="lazyload" data-src="" alt=""><br>
+                    <img class="lazyload" data-src="" alt=""><br>
+                    <img class="lazyload" data-src="" alt=""><br>
+                    <img class="lazyload" data-src="" alt=""><br>
+                </div>
+            </div>
+            <footer>Copyright © 2021 Syue-Yi Jhuang All Rights Reserved.</footer>
+        </div>
+    </section>
+    <div class="otherBlock"></div><!--彈出視窗後黑背景-->
+
+
+
+    <script>
+    
+    
+
+    /*加入進場動畫=============================================================*/
+    new WOW().init();
+
+ 
+
+    /*#sec3作品分類==================================================================================================================*/
+
+    $('#sec3 .container > span').click(function(){
+        //nav的a全部先不顯示 ; 抓出被按的span的屬性，跟span屬性一樣的a顯示
+        $('#sec3 figure').css('display','none');
+        var titleName = $(this).attr('data-title');
+        $("#sec3 figure[data-title*="+ titleName +"]").css('display','block');;
+        //再次執行wow
+        new WOW().init();
+        //按下span時滑動到#sec3區段
+        var targetTop = $('#sec3').position().top;
+        $('html,body').animate({scrollTop:targetTop});
+    })
+
+    /*#sec3作品彈出視窗==================================================================================================================*/
+    
+    function projectTextCenter() {
+        var myTop = ($(window).height() - $('.projectText').height()) / 2 + $(window).scrollTop() ; /*取得垂直中央位置*/
+        var myLeft = ($(window).width() - $('.projectText').width()) / 2;  /*取得水平中央位置*/
+        $('.projectText').offset({ top: myTop, left: myLeft }); /*設定區塊於水平與垂直置中*/  
+    }
+
+    $('#sec3 .project figure').click(function(event){
+        event.stopPropagation();//阻止父層被運作
+        $('.projectText').fadeIn('slow');
+        $('.projectText').scrollTop(0);
+        $('.otherBlock').css('display','block');
+        projectTextCenter(); /*呼叫置中函式，使廣告區塊置中*/
+    })
+
+    $(window).scroll(projectTextCenter); /*當網頁捲動時呼叫置中函式*/
+    $(window).resize(projectTextCenter); /*當視窗縮放時呼叫置中函式*/
+
+    /*彈出視窗關閉按鈕*/
+    $('.closebutton').click(function(){
+        $('.projectText').fadeOut('slow');
+        $('.otherBlock').css('display','none');
+    })
+    /*彈出視窗畫面任意地方點可關閉*/
+    $(document).click(function (event) {
+        if(  !$('.projectText').is(event.target) && $('.projectText').has(event.target).length === 0  ) {  $('.projectText').hide(); $('.otherBlock').css('display','none'); }
+    });
+    
+    
+    /*#sec3作品彈出視窗換內容==================================================================================================================*/
+
+     /*#sec3彈出視窗h2換字*/
+    $('figure').click(function(){
+        var sec3H2Array = [
+            '安麗Facebook社群圖設計', 
+            '六角國際路跑主視覺提案', 
+            '新北市政府鐵道馬拉松主視覺提案', 
+            '歐都納3D零接觸主視覺設計', 
+            '三星公益路跑主視覺提案', 
+            '廣達家庭日主視覺提案', 
+            '台灣精品2020前進柏林馬拉松主視覺提案', 
+            '新北市政府鐵道馬拉松主視覺延伸設計物製作', 
+            '美麗佳人裙擺澎澎RUN主視覺延伸設計物製作', 
+            '六角國際數位轉型記者會EDM設計', 
+            '台灣精品推廣行銷案設計', 
+            '寶礦力路跑主視覺延伸設計物製作', 
+            '廣達家庭日主視覺提案', 
+            'Firefox公益路跑主視覺延伸設計物製作', 
+            '千禧之愛健康基金會聖誕肌動趴專案設計', 
+            '虎趴路跑tigerrun主視覺延伸設計物製作', 
+            '台灣精品Zumba Fest專案設計', 
+            'SKECHERS加菲貓公益健走主視覺延伸設計物製作', 
+            'OPEN! RUN主視覺延伸設計物製作', 
+            'OPEN!夏日運動會氣墊樂園主視覺延伸設計物製作', 
+            '雨傘達人網拍長條圖設計', 
+            'Line貼圖 雙胞胎狗狗-鍋蓋跟Yoyi', 
+            'Line主題 Oh my goose!我的老天鵝啊！', 
+            '揪音GAME Logo設計', 
+            'SNOW美學Logo設計', 
+            '元本舖Logo設計', 
+            '左輔上海貿易公司Logo設計'];
+        var sec3H2 = $(this).attr('rrr');
+        sec3H2 = sec3H2Array[ sec3H2 ];
+        $(this).parent().next().children('.imgarea').children('h2').text(sec3H2);
+    })
+
+    /*#sec3彈出視窗p換字*/
+    $('figure').click(function(){
+        var sec3PArray = [
+            '為安麗Facebook社群經營所製作的圖片，主要是排版設計，亦有標題文字設計。使用的工具為Adobe Illustrator。', 
+            '為六角國際日出迎新為愛而跑路跑的主視覺提案，整體以線條呈現放射狀感。使用的工具為Adobe Photoshop、Adobe Illustrator。', 
+            '主要設計鐵道馬拉松主視覺及其他相關製作物，以對比的配色帶出活動標題，以拉字跟松字呈現接力感。使用的工具為Adobe Illustrator。', 
+            '為歐都納360極速身形掃描儀發表會主視覺設計，呈現進入掃描儀，即可踏入山林的意境。使用的工具為Adobe Illustrator。', 
+            '以三個不同技能的三星怪為路跑的人們加油，做為三星公益路跑主視覺提案設計。使用的工具為Adobe Illustrator。', 
+            '為2019廣達家庭日主視覺提案設計，畫面呈現一家人奔跑向高科技產品。使用的工具為Adobe Illustrator。', 
+            '以柏林地標與台灣地標構成的賽道，做為台灣精品2020前進柏林馬拉松主視覺提案設計。使用的工具為Adobe Illustrator。', 
+            '2020新北市政府鐵道馬拉松，廠商出主視覺，我設計主視覺相關延伸製作物，有EDM、記者會舞台背板、記者會指示牌等...。使用的工具為Adobe Illustrator。', 
+            '2019、2020美麗佳人裙擺澎澎RUN，廠商出主視覺，我設計主視覺相關延伸製作物，有EDM、舞台背板、拍照背板、指示牌等...。使用的工具為Adobe Illustrator。', 
+            '2020六角國際數位轉型記者會的EDM設計。使用的工具為Adobe Illustrator。', 
+            '2020台灣精品推廣行銷案，為為了推廣台灣精品館而與附近店家推出優惠折扣的活動，以台灣精品logo顏色做為主視覺色系。使用的工具為Adobe Illustrator。', 
+            '2018寶礦力路跑，廠商出主視覺，我設計主視覺相關延伸製作物，有EDM、活動贈品、舞台背板、拍照背板、起終點拱門、指示牌等...。<br>2019寶礦力路跑，廠商出主視覺，我設計主視覺相關延伸製作物，有banner、EDM、活動贈品、拍照背板等...。<br>2020寶礦力路跑設計主視覺提案。使用的工具為Adobe Illustrator。', 
+            '2018廣達家庭日的主視覺提案，以地球與都市搭配科技感的藍色，帶出創造未來世紀的感覺。', 
+            '2019 Firefox公益路跑，廠商出主視覺，我設計主視覺相關延伸製作物，有banner、EDM、活動贈品、手冊、舞台背板、拍照背板、指示牌等...。使用的工具為Adobe Illustrator。', 
+            '2019聖誕肌動趴為千禧之愛健康基金會為長輩設計的肌力檢測活動，因為在12月舉辦所以主視覺為一個扛著禮物很有肌力的聖誕老公公。所有設計例如主視覺、舞台背板、拍照背板、活動T-shirt等...皆由我負責。使用的工具為Adobe Illustrator。', 
+            '2019虎趴路跑，廠商出主視覺，我設計主視覺相關延伸製作物，有FB貼文、EDM、手冊、舞台背板、起終點拱門、拍照背板等...。使用的工具為Adobe Illustrator。', 
+            '2019台灣精品Zumba Fest為台灣精品在台北世貿一館舉辦的時尚運動派對，主視覺呈現的大肆潑墨效果，呼應Zumba Fest狂野的動感，所有設計例如展館設計圖、主視覺、舞台背板、產品介紹圖等...皆由我負責。使用的工具為SketchUp、Adobe Illustrator。', 
+            '2018 SKECHERS加菲貓公益健走，廠商出主視覺，我設計主視覺相關延伸製作物，有banner、EDM、手冊、舞台背板、拍照背板、指示牌等...。使用的工具為Adobe Illustrator。', 
+            '2018 OPEN! RUN，廠商出主視覺，我設計主視覺相關延伸製作物，有banner、EDM、手冊、舞台背板、起終點拱門、指示牌等...。<br>2019 OPEN! RUN，廠商出主視覺，我設計主視覺相關延伸製作物，有banner、EDM、活動贈品等...。使用的工具為Adobe Illustrator。', 
+            '2018 OPEN!夏日運動會氣墊樂園為統一集團在台北統一夢時代2樓戶外廣場讓小朋友在大型氣墊闖關遊樂趣的活動。廠商出主視覺，我設計主視覺相關延伸製作物，有場配圖、banner、EDM、售票亭、舞台背板、拍照背板等...。使用的工具為Adobe Illustrator。', 
+            '為我在雨傘達人工作時設計的網拍長條圖，使用Adobe Photoshop將雨傘與各種情境做結合。', 
+            '以我在蘭嶼養的雙胞胎狗狗鍋蓋跟Yoyi為主題，畫出幻想中他們相處的畫面。使用的工具為Adobe Illustrator。', 
+            '此Line主題特別的地方在於下方的按鈕，原本是平靜面無表情的鵝，但當你按下按鈕他就會變成很驚恐的表情。使用的工具為Adobe Illustrator。', 
+            '以遊戲的像素風格，搭配GAME的遊戲機外型，做為揪音GAME Youtube頻道的LOGO。使用的工具為Adobe Illustrator。', 
+            '以每個人都可以是一朵漂亮的花為概念，結合SNOW的S形成的SNOW美學Logo。使用的工具為Adobe Illustrator。', 
+            '以冰山、小屋的外型，搭配藍綠色及橘色，象徵此為冰與炸物多元販售的店家。使用的工具為Adobe Illustrator。', 
+            '以孔明帽為意象，帶出以諸葛亮的聰明智慧輔佐其他公司的核心精神。使用的工具為Adobe Illustrator。'
+        ];
+        var sec3P = $(this).attr('rrr');
+        sec3P = sec3PArray[ sec3P ];
+        $(this).parent().next().children('.imgarea').children('p').html(sec3P);
+    })
+
+    /*#sec3彈出視窗作品換圖*/
+    $('figure').click(function(){
+        var imgName = $(this).attr('alt');
+
+        $('.imgarea img:eq(0)').removeAttr('src').attr('src','./images/imgarea/'+imgName+'_0.jpg');
+        $('.imgarea img:eq(1)').removeAttr('src').attr('src','./images/imgarea/'+imgName+'_1.jpg');
+        $('.imgarea img:eq(2)').removeAttr('src').attr('src','./images/imgarea/'+imgName+'_2.jpg');
+        $('.imgarea img:eq(3)').removeAttr('src').attr('src','./images/imgarea/'+imgName+'_3.jpg');
+        $('.imgarea img:eq(4)').removeAttr('src').attr('src','./images/imgarea/'+imgName+'_4.jpg');
+        $('.imgarea img:eq(5)').removeAttr('src').attr('src','./images/imgarea/'+imgName+'_5.jpg');
+        $('.imgarea img:eq(6)').removeAttr('src').attr('src','./images/imgarea/'+imgName+'_6.jpg');
+        $('.imgarea img:eq(7)').removeAttr('src').attr('src','./images/imgarea/'+imgName+'_7.jpg');
+        $('.imgarea img:eq(8)').removeAttr('src').attr('src','./images/imgarea/'+imgName+'_8.jpg');
+        $('.imgarea img:eq(9)').removeAttr('src').attr('src','./images/imgarea/'+imgName+'_9.jpg');
+        $('.imgarea img:eq(10)').removeAttr('src').attr('src','./images/imgarea/'+imgName+'_10.jpg');
+        $('.imgarea img:eq(11)').removeAttr('src').attr('src','./images/imgarea/'+imgName+'_11.jpg');
+        $('.imgarea img:eq(12)').removeAttr('src').attr('src','./images/imgarea/'+imgName+'_12.jpg');
+        $('.imgarea img:eq(13)').removeAttr('src').attr('src','./images/imgarea/'+imgName+'_13.jpg');
+        $('.imgarea img:eq(14)').removeAttr('src').attr('src','./images/imgarea/'+imgName+'_14.jpg');
+        $('.imgarea img:eq(15)').removeAttr('src').attr('src','./images/imgarea/'+imgName+'_15.jpg');
+        
+    })
+ 
+
+
+
+    </script>
+
+</body>
+
+</html>
